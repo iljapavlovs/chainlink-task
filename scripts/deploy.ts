@@ -19,15 +19,17 @@ async function main() {
 
   console.log("Setting `uint256` variable with ", uint256.toString());
   const txUint256 = await getterSetter.setUint256(uint256);
+  await txUint256.wait();
+
   console.log("Setting `bytes32` variable with ", bytes32);
   const txBytes32 = await getterSetter.setBytes32(bytes32);
+  await txBytes32.wait();
+
   console.log("Setting `bytes` variable with ", bytes);
   const txBytes = await getterSetter.setBytes(bytes);
+  await txBytes.wait();
 
   console.log("Waiting until all transactions will complete...");
-  await txUint256.wait();
-  await txBytes32.wait();
-  await txBytes.wait();
   console.log("Transactions completed!");
 
   const uint256FromContract = await getterSetter.getUint256();
