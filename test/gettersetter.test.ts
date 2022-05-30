@@ -21,7 +21,7 @@ describe("GetterSetter contract", function () {
     await tx.wait();
     expect(await getterSetterContract.getUint256()).to.equal(256);
   });
-  it("Should emit an event when setting a vallue", async function () {
+  it("Should emit an event when setting a value", async function () {
     const byte32text = ethers.utils.formatBytes32String("test");
     await expect(getterSetterContract.setBytes32(byte32text))
       .to.emit(getterSetterContract, "SetBytes32")
