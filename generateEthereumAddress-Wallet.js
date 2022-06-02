@@ -1,3 +1,4 @@
+// https://www.quicknode.com/guides/web3-sdks/how-to-generate-a-new-ethereum-address-in-javascript
 // eslint-disable-next-line node/no-unpublished-require
 const ethers = require("ethers");
 const crypto = require("crypto");

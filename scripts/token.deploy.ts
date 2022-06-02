@@ -3,18 +3,23 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
+import { ethers } from "hardhat";
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
+
 async function main() {
-  const [deployer] = await hre.ethers.getSigners();
+  const [deployer] = await ethers.getSigners();
 
   console.log("Deploying contracts with the account:", deployer.address);
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Token = await hre.ethers.getContractFactory("Token");
+  const Token = await ethers.getContractFactory("Token");
   const token = await Token.deploy();
 
   console.log("Token address:", token.address);
+
+  const [owner]: SignerWithAddress[] = await ethers.getSigners();
+  console.log("Balance of my Wallet - " + (await owner.getBalance()));
 }
 
 main()

@@ -4,14 +4,30 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import * as fs from "fs";
 
 async function main() {
+  // 1. Create a factory for creating contracts
+  // (A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
+  // so Greeter here is a factory for instances of our greeter contract.)
   const GetterSetter = await ethers.getContractFactory("GetterSetter");
+  // 2. Deploy  getterSetter contract
+  // (Calling deploy() on a ContractFactory will start the deployment, and return a Promise that resolves to a Contract.
+  // This is the object that has a method for each of your smart contract functions)
   const getterSetter = await GetterSetter.deploy();
-  const [owner]: SignerWithAddress[] = await ethers.getSigners();
+
   const LOG_FILE_NAME = "log.json";
+  // 3. Wait until Contract is deployed
   await getterSetter.deployed();
 
+  // 4. Get all accounts - 1st account from the array of `ethers.getSigners()` is the Account which performed the deployment
+  // (A Signer in Ethers.js is an object that represents an Ethereum account.
+  // It's used to send transactions to contracts and other accounts.
+  // Here we're getting a list of the accounts in the node we're connected to,
+  // which in this case is Hardhat Network, and only keeping the first and second ones.)
+  const [owner]: SignerWithAddress[] = await ethers.getSigners();
+
+  // Address on the Blockchain of owner Account
   console.log("Deployer address:", owner.address);
 
+  // Address on the Blockchain of the getterSetter Contract
   console.log("GetterSetter Contract deployed to:", getterSetter.address);
   const uint256 = BigNumber.from(1111111111111);
   const bytes32 = ethers.utils.formatBytes32String("test32");
