@@ -53,7 +53,7 @@ Since codebase is versioned together with the tests and tests should run on ever
 Can be divided into 2 categories - 
 #### 1. testing each node with different roles in isolation - Leader and Follower
 
-![testing-nodes-in-isolation](testing-nodes-in-isolation.png)
+![testing-nodes-in-isolation](images/testing-nodes-in-isolation.png)
 
 What can be tested for each role:
 
