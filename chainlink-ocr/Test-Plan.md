@@ -105,6 +105,7 @@ Lets identify main goals of the System Under Test (SUT):
 
 * Latency can be covered by Performance tests. 
 * Resilience can be covered by E2E tests. One of the main 
+* Low Transaction Fees - need to check that oracles' reports are generated at a configurable rate, so that we don't generate more transactions than anticipated. This part can be checked at integration and e2e levels.
 
 Participants of the decentralized system need to regularly agree on the current state and this is called _"Consensus Achievement"_. 
 However, reaching consensus on distributed systems in a safe and efficient way is not an easy task since there is possibility that some of the nodes will fail or act maliciously. 
